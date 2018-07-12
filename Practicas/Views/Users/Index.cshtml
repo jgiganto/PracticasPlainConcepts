@@ -1,0 +1,14 @@
+﻿@model Practicas.Models.UsersModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+
+@foreach (var user in Model.Users)
+{
+    <p>@user.Name</p>
+}
+
+
