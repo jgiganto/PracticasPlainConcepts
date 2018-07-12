@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Practicas.test
+namespace Practicas.Models
 {
-    public class test
-    {//dada
+    public class Profile
+    {
     }
 }
