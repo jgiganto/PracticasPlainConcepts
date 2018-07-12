@@ -10,7 +10,9 @@ namespace Practicas.Controllers
             var model = new UsersModel();
             model.Users.Add(new UserModel
             {
-                Name = "Pepe"
+                Name = "Pepe",
+                Apellido = "Machado"
+                
             });
             return View(model);
         }
