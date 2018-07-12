@@ -30,20 +30,26 @@
 
 <table class="table table-bordered">
     <thead>
-
+    
+    <td>Nickname</td>
     <td>Nombre</td>
     <td>Apellido</td>
     <td>Pais</td>
     <td>Dirección</td>
+    <td>Fecha de nacimiento</td>
+
     </thead>
 
     @foreach (var user in Model.Users)
     {
     <tr>
+        <td>@user.Nickname</td>
         <td>@user.Name</td>
         <td>@user.Lastname</td>
         <td>@user.Country</td>
         <td>@user.Address</td>
+        <td>@user.Birthday</td>
+
     </tr>
     }
 </table>
