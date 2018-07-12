@@ -11,6 +11,8 @@ namespace Practicas.Controllers
             model.Users.Add(new UserModel
             {
                 Name = "Pepe",
+                Direccion = "mi casa"
+              ,
                 Apellido = "Machado"
                 
             });
