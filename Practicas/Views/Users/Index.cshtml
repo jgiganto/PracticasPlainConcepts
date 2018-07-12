@@ -4,6 +4,27 @@
     ViewBag.Title = "Index";
 }
 
+ 
+<script src="~/Scripts/jquery-3.3.1.js">
+</script>
+<script type="text/javascript">
+    //$(document).ready(
+
+        function prueba() {         
+        var usuario = "lalalala";
+        var pw = "";
+            //var boton = document.getElementById('btnenviar');
+            usuario = document.getElementById('camponombre').value;
+            pw = document.getElementById('campopw');
+            alert("holaaaa  " + usuario); 
+    }
+
+   // );
+
+</script>
+    
+
+
 <h2>Users</h2>
 
 
@@ -26,12 +47,16 @@
     </tr>
     }
 </table>
+<form method="post" id="formulario">
+    <div>
+        <h1>Login</h1>
+        <label>Usuario &nbsp;</label>
+        <input type="text" name="camponombre" id="camponombre" placeholder="Introduzca el nombre" required /><br />
+        <label>Password</label>
+        <input type="password" name="campopw" id="campopw" placeholder="Contraseña" required /><br />
+        <button type="submit" id="btnenviar" onclick="prueba();" class="bg-success">Enviar</button>
+    </div>
+</form>
 
-<div>
-    <h1>Login</h1>
-    <label>Usuario &nbsp;</label><input type="text" name="camponombre" placeholder="Introduzca el nombre" required /><br />
-    <label>Password</label><input type="password" name="campopw" placeholder="Contraseña" required /><br />
-    <button type="submit" class="bg-success">Enviar</button>
-</div>
 
 
