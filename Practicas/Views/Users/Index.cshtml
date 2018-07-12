@@ -6,12 +6,32 @@
 
 <h2>Users</h2>
 
-@foreach (var user in Model.Users)
-{
-    
-   <label>Dirección</label> <p>@user.Direccion</p>
-   <label>Nombre</label> <p>@user.Name</p>
-   <label>Apellido</label><p>@user.Apellido</p>
-}
+
+<table class="table table-bordered">
+    <thead>
+
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Pais</td>
+    <td>Dirección</td>
+    </thead>
+
+    @foreach (var user in Model.Users)
+    {
+    <tr>
+        <td>@user.Name</td>
+        <td>@user.Lastname</td>
+        <td>@user.Country</td>
+        <td>@user.Address</td>
+    </tr>
+    }
+</table>
+
+<div>
+    <h1>Login</h1>
+    <label>Usuario &nbsp;</label><input type="text" name="camponombre" placeholder="Introduzca el nombre" required /><br />
+    <label>Password</label><input type="password" name="campopw" placeholder="Contraseña" required /><br />
+    <button type="submit" class="bg-success">Enviar</button>
+</div>
 
 

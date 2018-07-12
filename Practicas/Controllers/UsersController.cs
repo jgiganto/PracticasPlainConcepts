@@ -11,10 +11,21 @@ namespace Practicas.Controllers
             model.Users.Add(new UserModel
             {
                 Name = "Pepe",
-                Direccion = "mi casa"
-              ,
-                Apellido = "Machado"
+                Address = "mi casa",              
+                Lastname = "Machado",
+                Country="España",
+                Password="123",
+                Nickname="pepillo"
                 
+            });
+            model.Users.Add(new UserModel
+            {
+                Name = "Manuela",
+                Address = "mi casa",
+                Lastname = "Fuertes",
+                Country = "España",
+                Password = "123",
+                Nickname="manuelilla"
             });
             return View(model);
         }
