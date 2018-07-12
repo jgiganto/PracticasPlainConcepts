@@ -5,8 +5,7 @@ using System.Web;
 
 namespace Practicas.Models
 {
-    public class test
+    public class RamaJesus
     {
-        //hola
     }
 }
