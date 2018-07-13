@@ -18,12 +18,14 @@ namespace Practicas.Controllers
             //    Country="España",
             //    Password="123",
             //    Nickname="pepillo"
-                
+
             //});
-           
+            NewUsersModel usuarios;
+                    usuarios =  (NewUsersModel)TempData["Datos"];
+            
 
 
-            return View();
+            return View(usuarios);
         }
 
         [HttpGet]
@@ -40,8 +42,9 @@ namespace Practicas.Controllers
             NewUserModel usuario = new NewUserModel();
             usuario.Name = model.Name;
             listausuarios.NewUsers.Add(usuario);
+            TempData["Datos"] = listausuarios;
 
-            return RedirectToAction("Index", listausuarios);
+            return RedirectToAction("Index");
         }
     }
 }
