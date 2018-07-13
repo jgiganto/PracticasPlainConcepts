@@ -1,68 +1,69 @@
-﻿@model Practicas.Models.UsersModel
+﻿@using Practicas.Resources
+@model Practicas.Models.NewUsersModel
 
 @{
     ViewBag.Title = "Index";
 }
 
- 
-<script src="~/Scripts/jquery-3.3.1.js">
-</script>
 <script type="text/javascript">
     //$(document).ready(
 
-        function prueba() {         
-        var usuario = "lalalala";
+    function prueba() {
+        var usuario = "";
         var pw = "";
-            //var boton = document.getElementById('btnenviar');
-            usuario = document.getElementById('camponombre').value;
-            pw = document.getElementById('campopw');
-            alert("holaaaa  " + usuario); 
+        //var boton = document.getElementById('btnenviar');
+        usuario = document.getElementById('camponombre').value;
+        pw = document.getElementById('campopw');
+        // alert("holaaaa  " + usuario);
+
+        if (usuario == campomodel) {
+            alert("ok");
+        }
+        $('#lastName').value;
     }
 
-   // );
+    // );
 
 </script>
-    
+
 
 
 <h2>Users</h2>
+@if (Model != null)
+{
+
+    <table class="table table-bordered">
+        <thead>
+
+        <td>Nickname</td>
+        <td>Nombre</td>
+        <td>Apellido</td>
+        <td>Pais</td>
+        <td>Dirección</td>
+        <td>Fecha de nacimiento</td>
+
+        </thead>
+
+        @foreach (var user in Model.NewUsers)
+        {
+            <tr>
+                <td>@user.Name</td>
 
 
-<table class="table table-bordered">
-    <thead>
-    
-    <td>Nickname</td>
-    <td>Nombre</td>
-    <td>Apellido</td>
-    <td>Pais</td>
-    <td>Dirección</td>
-    <td>Fecha de nacimiento</td>
+            </tr>
+        }
+       
+    </table>
+}
 
-    </thead>
-
-    @foreach (var user in Model.Users)
-    {
-    <tr>
-        <td>@user.Nickname</td>
-        <td>@user.Name</td>
-        <td>@user.Lastname</td>
-        <td>@user.Country</td>
-        <td>@user.Address</td>
-        <td>@user.Birthday</td>
-
-    </tr>
-    }
-</table>
-<form method="post" id="formulario">
-    <div>
-        <h1>Login</h1>
-        <label>Usuario &nbsp;</label>
-        <input type="text" name="camponombre" id="camponombre" placeholder="Introduzca el nombre" required /><br />
-        <label>Password</label>
-        <input type="password" name="campopw" id="campopw" placeholder="Contraseña" required /><br />
-        <button type="submit" id="btnenviar" onclick="prueba();" class="bg-success">Enviar</button>
-    </div>
-</form>
-
-
+    <form method="post" id="formulario">
+        <div>
+            <h1>@CommonResources.Login</h1>
+            <label>Usuario &nbsp;</label>
+            <input type="text" name="camponombre" id="camponombre" placeholder="Introduzca el nombre" required /><br />
+            <label>Password</label>
+            <input type="password" name="campopw" id="campopw" placeholder="Contraseña" required /><br />
+            <button type="submit" id="btnenviar" onclick="prueba();" class="bg-success">Enviar</button>
+        </div>
+    </form>
 

@@ -1,0 +1,17 @@
+﻿@using Practicas.Resources
+@model Practicas.Models.NewUserModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+
+    <button type="submit">Save</button>
+}
+
+
