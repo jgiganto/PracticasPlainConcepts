@@ -1,36 +1,16 @@
 ﻿@using Practicas.Resources
-@model Practicas.Models.NewUsersModel
+@model IEnumerable<Practicas.Models.NewUserModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<script type="text/javascript">
-    //$(document).ready(
 
-    function prueba() {
-        var usuario = "";
-        var pw = "";
-        //var boton = document.getElementById('btnenviar');
-        usuario = document.getElementById('camponombre').value;
-        pw = document.getElementById('campopw');
-        // alert("holaaaa  " + usuario);
-
-        if (usuario == campomodel) {
-            alert("ok");
-        }
-        $('#lastName').value;
-    }
-
-    // );
-
-</script>
 
 
 
 <h2>Users</h2>
-@if (Model != null)
-{
+ 
 
     <table class="table table-bordered">
         <thead>
@@ -41,17 +21,15 @@
 
         </thead>
 
-        @foreach (var user in Model.NewUsers)
+        @foreach (var user in Model)
         {
             <tr>
-                <td>@user.Name</td>
-
-
+                <td>@Html.DisplayFor(modelItem=>user.Name)</td>
             </tr>
         }
        
     </table>
-}
+ 
 
     <form method="post" id="formulario">
         <div>
@@ -63,4 +41,5 @@
             <button type="submit" id="btnenviar" onclick="prueba();" class="bg-success">Enviar</button>
         </div>
     </form>
+<a href="CreateNewUser">Nuevo usuario</a>
 

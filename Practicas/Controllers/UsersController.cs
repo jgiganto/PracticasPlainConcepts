@@ -1,31 +1,30 @@
 ﻿using Practicas.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+ 
 
 namespace Practicas.Controllers
 {
     public class UsersController : Controller
     {
+        ModeloUsuarios modelo;
+        public void CrearModelo()
+        {
+            Uri uri = HttpContext.Request.Url;
+            String rutauri = uri.Scheme + "://" + uri.Authority
+                + "/Models/usuarios.xml";
+            String path =
+                HttpContext.Server.MapPath("~/Models/usuarios.xml");
+            modelo = new ModeloUsuarios(rutauri, path);
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            //var model = new UsersModel();
-            //model.Users.Add(new UserModel
-            //{
-            //    Name = "Pepe",
-            //    Address = "mi casa",              
-            //    Lastname = "Machado",
-            //    Country="España",
-            //    Password="123",
-            //    Nickname="pepillo"
-
-            //});
-            NewUsersModel usuarios;
-                    usuarios =  (NewUsersModel)TempData["Datos"];
-            
-
-
-            return View(usuarios);
+            this.CrearModelo();
+            List<NewUserModel> lista = modelo.GetUsuarios();  
+            return View(lista);
         }
 
         [HttpGet]
@@ -42,9 +41,9 @@ namespace Practicas.Controllers
             NewUserModel usuario = new NewUserModel();
             usuario.Name = model.Name;
             listausuarios.NewUsers.Add(usuario);
-            TempData["Datos"] = listausuarios;
+            Session["Datos"] = listausuarios;
 
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }
