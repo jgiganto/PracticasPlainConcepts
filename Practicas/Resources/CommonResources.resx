@@ -120,28 +120,49 @@
   <data name="Address" xml:space="preserve">
     <value>Dirección</value>
   </data>
+  <data name="AddressIsRequired" xml:space="preserve">
+    <value>Debe introducir una dirección</value>
+  </data>
   <data name="Birthday" xml:space="preserve">
     <value>Fecha de nacimiento</value>
+  </data>
+  <data name="BirthdayIsRequired" xml:space="preserve">
+    <value>Debe introducir la fecha de nacimiento</value>
   </data>
   <data name="Country" xml:space="preserve">
     <value>Pais</value>
   </data>
+  <data name="CountryIsRequired" xml:space="preserve">
+    <value>Debe introducir el Pais</value>
+  </data>
   <data name="Lastname" xml:space="preserve">
     <value>Apellido</value>
+  </data>
+  <data name="LastNameIsRequired" xml:space="preserve">
+    <value>Debe introducir el apellido</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LoginIsRequired" xml:space="preserve">
+    <value>Debe introducir un Login</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
+  </data>
+  <data name="NameIsRequired" xml:space="preserve">
+    <value>Debe introducir un nombre</value>
   </data>
   <data name="Nickname" xml:space="preserve">
     <value>Usuario</value>
   </data>
+  <data name="NickNameIsRequired" xml:space="preserve">
+    <value>Debe introducir un usuario</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Contraseña</value>
   </data>
-  <data name="UserIsRequired" xml:space="preserve">
-    <value>Debe introducir un nombre de usuario</value>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Debe introducir una contraseña</value>
   </data>
 </root>

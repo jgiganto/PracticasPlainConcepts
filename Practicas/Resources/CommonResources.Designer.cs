@@ -70,11 +70,29 @@ namespace Practicas.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debe introducir una dirección.
+        /// </summary>
+        public static string AddressIsRequired {
+            get {
+                return ResourceManager.GetString("AddressIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fecha de nacimiento.
         /// </summary>
         public static string Birthday {
             get {
                 return ResourceManager.GetString("Birthday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debe introducir la fecha de nacimiento.
+        /// </summary>
+        public static string BirthdayIsRequired {
+            get {
+                return ResourceManager.GetString("BirthdayIsRequired", resourceCulture);
             }
         }
         
@@ -88,11 +106,29 @@ namespace Practicas.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debe introducir el Pais.
+        /// </summary>
+        public static string CountryIsRequired {
+            get {
+                return ResourceManager.GetString("CountryIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apellido.
         /// </summary>
         public static string Lastname {
             get {
                 return ResourceManager.GetString("Lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debe introducir el apellido.
+        /// </summary>
+        public static string LastNameIsRequired {
+            get {
+                return ResourceManager.GetString("LastNameIsRequired", resourceCulture);
             }
         }
         
@@ -106,11 +142,29 @@ namespace Practicas.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debe introducir un Login.
+        /// </summary>
+        public static string LoginIsRequired {
+            get {
+                return ResourceManager.GetString("LoginIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debe introducir un nombre.
+        /// </summary>
+        public static string NameIsRequired {
+            get {
+                return ResourceManager.GetString("NameIsRequired", resourceCulture);
             }
         }
         
@@ -124,6 +178,15 @@ namespace Practicas.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debe introducir un usuario.
+        /// </summary>
+        public static string NickNameIsRequired {
+            get {
+                return ResourceManager.GetString("NickNameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contraseña.
         /// </summary>
         public static string Password {
@@ -133,11 +196,11 @@ namespace Practicas.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Debe introducir un nombre de usuario.
+        ///   Looks up a localized string similar to Debe introducir una contraseña.
         /// </summary>
-        public static string UserIsRequired {
+        public static string PasswordIsRequired {
             get {
-                return ResourceManager.GetString("UserIsRequired", resourceCulture);
+                return ResourceManager.GetString("PasswordIsRequired", resourceCulture);
             }
         }
     }
