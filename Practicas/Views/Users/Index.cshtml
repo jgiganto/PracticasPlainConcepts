@@ -11,7 +11,8 @@
 
 <h2>Users</h2>
  
-
+@if (Model != null)
+{
     <table class="table table-bordered">
         <thead>
 
@@ -24,12 +25,13 @@
         @foreach (var user in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem=>user.Name)</td>
+                <td>@Html.DisplayFor(modelItem =>user.Nombre)</td>
             </tr>
         }
        
     </table>
- 
+}
+
 
     <form method="post" id="formulario">
         <div>
