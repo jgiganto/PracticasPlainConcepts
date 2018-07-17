@@ -6,7 +6,7 @@ namespace Practicas.Models
     public class NewUserModel
     {
         [Required(ErrorMessageResourceName = nameof(CommonResources.UserIsRequired),ErrorMessageResourceType = typeof(CommonResources))]
-        public string Nombre { get; set; }
+        public string Name { get; set; }
         
     }
 }
