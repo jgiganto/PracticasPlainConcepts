@@ -123,6 +123,9 @@
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
+  <data name="PassIsRequired" xml:space="preserve">
+    <value>La contraseña es requerida</value>
+  </data>
   <data name="UserIsRequired" xml:space="preserve">
     <value>Debe introducir un nombre de usuario</value>
   </data>

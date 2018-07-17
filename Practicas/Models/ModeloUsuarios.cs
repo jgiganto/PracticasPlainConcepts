@@ -13,6 +13,7 @@ namespace Practicas.Models
             var query = @"SELECT * FROM Users";
             var listausuarios = Exec<NewUserModel>(query);
             return (List<NewUserModel>)listausuarios;
-        }       
+        }
+        
     }   
  }
