@@ -10,14 +10,14 @@ namespace Practicas.Models
     {
         public List<NewUserModel> GetUsuarios()
         {
-            var query = @"SELECT Nombre FROM Users";             
+            var query = @"SELECT * FROM Users";             
             var listausuarios = Exec<NewUserModel>(query);
             return (List<NewUserModel>)listausuarios;                         
         } 
         
-        public void InsertarUsuario(String nombre)
+        public void InsertarUsuario(String nombre, String apellidos)
         {
-            var query = @"INSERT INTO Users (Nombre)  Values ('" + nombre +  "')";
+            var query = @"INSERT INTO Users (Nombre)  Values ('" + nombre +  "''"+ apedillos+"')";
             var listausuarios = Exec<NewUserModel>(query);
         }
     }   

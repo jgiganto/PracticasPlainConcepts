@@ -35,7 +35,7 @@ namespace Practicas.Controllers
             if (ModelState.IsValid)
             {
                 this.CrearModelo();
-                modelo.InsertarUsuario(model.Nombre);
+                modelo.InsertarUsuario(model.Name, model.Lastname, model.Nickname, model.Password, model.Country, model.Birthday, model.Address);
                 return Redirect("Index");
             }
             return View(model);
