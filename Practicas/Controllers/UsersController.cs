@@ -22,23 +22,23 @@ namespace Practicas.Controllers
             return View(lista);
         }
 
-        //[HttpGet]
-        //public ActionResult CreateNewUser()
-        //{
-        //    var model = new NewUsersModel();
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult CreateNewUser()
+        {
+            var model = new NewUsersModel();
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult CreateNewUser(NewUserModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        this.CrearModelo();
-        //        modelo.InsertarUsuario(model.Name);
-        //        return Redirect("Index");
-        //    }
-        //    return View(model);
-        //}
+        [HttpPost]
+        public ActionResult CreateNewUser(NewUserModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.CrearModelo();
+                modelo.InsertarUsuario(model.Nombre);
+                return Redirect("Index");
+            }
+            return View(model);
+        }
     }
 }

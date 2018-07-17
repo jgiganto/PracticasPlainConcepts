@@ -11,12 +11,19 @@
 
 <h2>Users</h2>
  
-
+@if (Model != null)
+{
     <table class="table table-bordered">
         <thead>
 
        
-        <td>Nombre</td>
+        <td>@CommonResources.Name</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
       
 
         </thead>
@@ -24,12 +31,19 @@
         @foreach (var user in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => user.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem =>user.Name)</td>
+                <td>@Html.DisplayFor(modelItem => user.Lastname)</td>
+                <td>@Html.DisplayFor(modelItem => user.Nickname)</td>
+                <td>@Html.DisplayFor(modelItem => user.Password)</td>
+                <td>@Html.DisplayFor(modelItem => user.Country)</td>
+                <td>@Html.DisplayFor(modelItem => user.Birthday)</td>
+                <td>@Html.DisplayFor(modelItem => user.Address)</td>
             </tr>
         }
        
     </table>
- 
+}
+
 
     <form method="post" id="formulario">
         <div>
