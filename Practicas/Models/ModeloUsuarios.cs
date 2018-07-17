@@ -1,31 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Xml.Linq;
+using System.Data;
+
+
 
 namespace Practicas.Models
 {
-    public class ModeloUsuarios
+    public class ModeloUsuarios: DapperContext
     {
-        private string uriusuarios;
-        private string path;
-        XDocument docxml;
-        public ModeloUsuarios(String uri, String path)
-        {
-            uriusuarios = uri;
-            this.path = path;
-            docxml = XDocument.Load(uri);
-        }
         public List<NewUserModel> GetUsuarios()
         {
-            var consulta = from datos in docxml.Descendants("NewUserModel")
-                           select new NewUserModel
-                           {
-                               Name = datos.Element("nombre").Value
-                           };
-            return consulta.ToList();
-        }
-
-    }
-}
+            var query = @"SELECT * FROM Users";
+            var listausuarios = Exec<NewUserModel>(query);
+            return (List<NewUserModel>)listausuarios;
+        }       
+    }   
+ }

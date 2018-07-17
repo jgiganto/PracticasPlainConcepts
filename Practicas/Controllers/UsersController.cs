@@ -10,13 +10,8 @@ namespace Practicas.Controllers
     {
         ModeloUsuarios modelo;
         public void CrearModelo()
-        {
-            Uri uri = HttpContext.Request.Url;
-            String rutauri = uri.Scheme + "://" + uri.Authority
-                + "/Models/usuarios.xml";
-            String path =
-                HttpContext.Server.MapPath("~/Models/usuarios.xml");
-            modelo = new ModeloUsuarios(rutauri, path);
+        {            
+            modelo = new ModeloUsuarios();
         }
 
         [HttpGet]
@@ -27,23 +22,23 @@ namespace Practicas.Controllers
             return View(lista);
         }
 
-        [HttpGet]
-        public ActionResult CreateNewUser()
-        {
-            var model = new NewUsersModel();
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult CreateNewUser()
+        //{
+        //    var model = new NewUsersModel();
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult CreateNewUser(NewUserModel model)
-        {
-            NewUsersModel listausuarios = new NewUsersModel();
-            NewUserModel usuario = new NewUserModel();
-            usuario.Name = model.Name;
-            listausuarios.NewUsers.Add(usuario);
-            Session["Datos"] = listausuarios;
-
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult CreateNewUser(NewUserModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        this.CrearModelo();
+        //        modelo.InsertarUsuario(model.Name);
+        //        return Redirect("Index");
+        //    }
+        //    return View(model);
+        //}
     }
 }
