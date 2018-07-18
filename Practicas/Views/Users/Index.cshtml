@@ -15,19 +15,17 @@
 {
     <table class="table table-bordered">
         <thead>
+            <tr>
 
-       <tr>
-           <td>@CommonResources.Name</td>
-           <td>@CommonResources.Lastname</td>
-           <td>@CommonResources.Nickname</td>
-           <td>@CommonResources.Password</td>
-           <td>@CommonResources.Country</td>
-           <td>@CommonResources.Birthday</td>
-           <td>@CommonResources.Address</td>
-       </tr>
-       
-      
-
+                <td>@CommonResources.Name</td>
+                <td>@CommonResources.Lastname</td>
+                <td>@CommonResources.Nickname</td>
+                <td>@CommonResources.Password</td>
+                <td>@CommonResources.Country</td>
+                <td>@CommonResources.Birthday</td>
+                <td>@CommonResources.Address</td>
+                <td>User ID</td>
+            </tr>
         </thead>
 
         @foreach (var user in Model)
@@ -40,6 +38,7 @@
                 <td>@Html.DisplayFor(modelItem => user.Country)</td>
                 <td>@Html.DisplayFor(modelItem => user.Birthday)</td>
                 <td>@Html.DisplayFor(modelItem => user.Address)</td>
+                <td>@Html.DisplayFor(modelItem => user.UserId)</td>
             </tr>
         }
        
@@ -50,12 +49,14 @@
     <form method="post" id="formulario">
         <div>
             <h1>@CommonResources.Login</h1>
-            <label>Usuario &nbsp;</label>
+            <label>@CommonResources.Nickname &nbsp;</label>
             <input type="text" name="camponombre" id="camponombre" placeholder="Introduzca el nombre" required /><br />
-            <label>Password</label>
+            <label>@CommonResources.Password</label>
             <input type="password" name="campopw" id="campopw" placeholder="Contraseña" required /><br />
-            <button type="submit" id="btnenviar" onclick="prueba();" class="bg-success">Enviar</button>
+            <button type="submit" id="btnenviar"  class="bg-success">Enviar</button>
         </div>
     </form>
+ <br />
+<h2 style="color:@ViewBag.color">@ViewBag.res</h2>
 <a href="CreateNewUser">Nuevo usuario</a>
 

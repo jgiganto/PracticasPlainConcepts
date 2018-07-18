@@ -1,8 +1,9 @@
 ﻿using Practicas.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
- 
+using System.Web.Security;
 
 namespace Practicas.Controllers
 {
@@ -17,9 +18,44 @@ namespace Practicas.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            ViewBag.res = "Mensaje de verificación";
+            ViewBag.color = "blue";
             this.CrearModelo();
-            List<NewUserModel> lista = modelo.GetUsuarios();  
-            return View(lista);
+            List<NewUserModel> lista = modelo.GetUsuarios();
+            if (ModelState.IsValid)
+            {
+                return View(lista);
+            }
+
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Index(String camponombre, String campopw)
+        {
+            this.CrearModelo();
+            NewUserModel usuario = new NewUserModel();
+            usuario.Nickname = camponombre;
+            usuario.Password = campopw;
+            IEnumerable<NewUserModel> result =  modelo.VerificarUsuario(usuario);
+            int num = Enumerable.Cast<int>(result).ToString().Count(); 
+
+            if ( num != 1  )
+            {
+                ViewBag.res = "Usuario correcto";
+                ViewBag.color = "green";
+               
+            }
+            else
+            {
+                ViewBag.res = "Usuario o contraseñas incorrectos";
+                ViewBag.color = "Red";
+            }
+            List<NewUserModel> lista = modelo.GetUsuarios();
+            if (ModelState.IsValid)
+            {
+                return View(lista);
+            }
+            return View();
         }
 
         [HttpGet]
