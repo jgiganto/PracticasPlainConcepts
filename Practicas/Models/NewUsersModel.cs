@@ -11,5 +11,6 @@ namespace Practicas.Models
         {
             NewUsers = new List<NewUserModel>();
         }
+      
     }
 }

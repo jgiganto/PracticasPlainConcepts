@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Practicas.Resources;
 
+
+
 namespace Practicas.Models
 {
-    public class NewUserModel
+    public class NewUserModel 
     {
         [Required(ErrorMessageResourceName = nameof(CommonResources.NameIsRequired),ErrorMessageResourceType = typeof(CommonResources))]
         public string Name { get; set; }
@@ -19,6 +21,7 @@ namespace Practicas.Models
         public string Country { get; set; }
         [Required(ErrorMessageResourceName = nameof(CommonResources.BirthdayIsRequired), ErrorMessageResourceType = typeof(CommonResources))]
         public string Birthday { get; set; }
-
+        public int UserId { get; set; }
+         
     }
 }
