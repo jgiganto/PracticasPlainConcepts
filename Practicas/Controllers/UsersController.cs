@@ -75,7 +75,6 @@ namespace Practicas.Controllers
             {
                 ViewBag.res = "Usuario o contraseñas incorrectos";
                 ViewBag.color = "Red";
-
             }
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)
