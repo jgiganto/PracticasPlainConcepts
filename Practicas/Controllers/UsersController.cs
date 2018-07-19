@@ -23,6 +23,8 @@ namespace Practicas.Controllers
             ViewBag.color = "green";
             this.CrearModelo();
             List<NewUserModel> lista = modelo.GetUsuarios();
+            var Usuario=
+            if()
             if (ModelState.IsValid)
             {
                 return View(lista);
