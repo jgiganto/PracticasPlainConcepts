@@ -10,13 +10,7 @@ namespace Practicas.Models
 {
     public class ModeloUsuarios: DapperContext
     {   
-        public  CurrentUser()
-        {
-        
-            var query = @"SELECT NickName from Users where USERID. = ";
-
-            return user;
-        }
+       
         public List<NewUserModel> GetUsuarios()
         {
             var query = @"SELECT * FROM Users";             
