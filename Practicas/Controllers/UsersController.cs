@@ -19,8 +19,8 @@ namespace Practicas.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.res = "Mensaje de verificación";
-            ViewBag.color = "blue";
+            ViewBag.res = "Usuario correcto";
+            ViewBag.color = "green";
             this.CrearModelo();
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)
@@ -29,6 +29,11 @@ namespace Practicas.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
         }
         [HttpPost]
         public ActionResult Login(String camponombre, String campopw)
@@ -47,8 +52,7 @@ namespace Practicas.Controllers
              
             if (count == 1 )
             {
-                ViewBag.res = "Usuario correcto";
-                ViewBag.color = "green";
+                
                 FormsAuthenticationTicket ticket =
                     new FormsAuthenticationTicket(1, usuario.Name.ToString(), DateTime.Now, DateTime.Now.AddMinutes(15), true, usuario.UserId.ToString(), FormsAuthentication.FormsCookiePath);
                 String ticketEncrypted = FormsAuthentication.Encrypt(ticket);
@@ -56,7 +60,7 @@ namespace Practicas.Controllers
                 Response.Cookies.Add(httpCookie);
                
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
             else
             {
