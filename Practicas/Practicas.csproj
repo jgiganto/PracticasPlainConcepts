@@ -229,6 +229,7 @@
     <Content Include="Views\Users\CreateNewUser.cshtml" />
     <Content Include="Views\Zonas\ErrorAcceso.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Users\ContenidoParaUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

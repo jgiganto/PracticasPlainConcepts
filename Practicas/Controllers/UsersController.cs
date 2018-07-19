@@ -25,8 +25,6 @@ namespace Practicas.Controllers
 
             this.CrearModelo();
             List<NewUserModel> lista = modelo.GetUsuarios();
-            var Usuario=
-            if()
             if (ModelState.IsValid)
             {
                 return View(lista);
@@ -54,25 +52,39 @@ namespace Practicas.Controllers
             //{
             //    count++;
             //}
-             
-            if (count == 1 )
+
+            if (count == 1)
             {
-                
+
                 FormsAuthenticationTicket ticket =
                     new FormsAuthenticationTicket(1, usuario.Name.ToString(), DateTime.Now, DateTime.Now.AddMinutes(15), true, usuario.UserId.ToString(), FormsAuthentication.FormsCookiePath);
                 String ticketEncrypted = FormsAuthentication.Encrypt(ticket);
                 HttpCookie httpCookie = new HttpCookie("cookiecliente", ticketEncrypted);
                 Response.Cookies.Add(httpCookie);
                 IEnumerable<Practicas.Models.Roles> userRoles = modelo.GetRoleByUserId(usuario.UserId);
-                 
-                var userHaveRoleX = userRoles.Any(r => r.Role == "Admin");
-                var userHaveRoleX = userRoles.Any(r => r.Role == "Client");
-                var userHaveRoleX = userRoles.Any(r => r.Role == "User");
 
-                if (userHaveRoleX == true){
+                var userAdmin = userRoles.Any(r => r.Role == "Admin");
+                var userClient = userRoles.Any(r => r.Role == "Client");
+                var userUser = userRoles.Any(r => r.Role == "User");
+
+
+                if (userAdmin == true) {
 
                     TempData["ROL"] = "El usuario es: Admin";
+                    return RedirectToAction("Index");
+                } else if (userClient == true)
+                {
+                    TempData["ROL"] = "El usuario es: Client";
+                    return RedirectToAction("Contenido");
+                } else if (userUser == true)
+                {
+                    TempData["ROL"] = "El usuario es: User";
+                    return RedirectToAction("ContenidoParaUser");
                 }
+                else
+                {
+                    ModelState.AddModelError("Fallo", "no esta pillando los roles");
+                } 
 
                 //foreach(var user in userRole)
                 //{
@@ -83,12 +95,11 @@ namespace Practicas.Controllers
 
 
 
-                return RedirectToAction("Index");
+               
             }
             else
             {
-                ViewBag.res = "Usuario o contraseñas incorrectos";
-                ViewBag.color = "Red";
+                ModelState.AddModelError("Error", "El usuario no se corresponde");
             }
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)
