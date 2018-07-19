@@ -40,17 +40,18 @@ namespace Practicas.Controllers
         [HttpPost]
         public ActionResult Login(String camponombre, String campopw)
         {
-            int count = 0;
+            //int count = 0;
             this.CrearModelo();
             NewUserModel usuario = new NewUserModel();
             usuario.Nickname = camponombre;
             usuario.Password = campopw;
             IEnumerable<NewUserModel> result =  modelo.VerificarUsuario(usuario);
+            var count = result.Count();
             usuario = result.FirstOrDefault();
-            foreach (var u in result)
-            {
-                count++;
-            }
+            //foreach (var u in result)
+            //{
+            //    count++;
+            //}
              
             if (count == 1 )
             {
@@ -60,12 +61,23 @@ namespace Practicas.Controllers
                 String ticketEncrypted = FormsAuthentication.Encrypt(ticket);
                 HttpCookie httpCookie = new HttpCookie("cookiecliente", ticketEncrypted);
                 Response.Cookies.Add(httpCookie);
-                IEnumerable<Practicas.Models.Roles> userRole = modelo.GetRoleByUserId(usuario.UserId);
-                foreach(var user in userRole)
-                {
-                    String miRol =  user.Role.ToString();
-                    TempData["ROL"] ="El usuario es: " + miRol;
+                IEnumerable<Practicas.Models.Roles> userRoles = modelo.GetRoleByUserId(usuario.UserId);
+                 
+                var userHaveRoleX = userRoles.Any(r => r.Role == "Admin");
+                var userHaveRoleX = userRoles.Any(r => r.Role == "Client");
+                var userHaveRoleX = userRoles.Any(r => r.Role == "User");
+
+                if (userHaveRoleX == true){
+
+                    TempData["ROL"] = "El usuario es: Admin";
                 }
+
+                //foreach(var user in userRole)
+                //{
+                //String miRol =  user.Role.ToString();
+                //String miRol = userHaveRoleX.ToString();
+                    //TempData["ROL"] ="El usuario es: " + miRol;
+                //}
 
 
 
