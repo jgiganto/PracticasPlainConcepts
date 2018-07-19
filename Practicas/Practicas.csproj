@@ -172,8 +172,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\NewUsersModel.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UserPrincipal.cs" />
+    <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Models\UsersModel.cs" />
     <Compile Include="Models\VerificarUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

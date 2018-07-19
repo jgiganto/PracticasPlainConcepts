@@ -21,6 +21,8 @@ namespace Practicas.Controllers
         {
             ViewBag.res = "Usuario correcto";
             ViewBag.color = "green";
+            ViewBag.Rol = TempData["ROL"].ToString();
+
             this.CrearModelo();
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)
@@ -58,7 +60,14 @@ namespace Practicas.Controllers
                 String ticketEncrypted = FormsAuthentication.Encrypt(ticket);
                 HttpCookie httpCookie = new HttpCookie("cookiecliente", ticketEncrypted);
                 Response.Cookies.Add(httpCookie);
-               
+                IEnumerable<Practicas.Models.Roles> userRole = modelo.GetRoleByUserId(usuario.UserId);
+                foreach(var user in userRole)
+                {
+                    String miRol =  user.Role.ToString();
+                    TempData["ROL"] ="El usuario es: " + miRol;
+                }
+
+
 
                 return RedirectToAction("Index");
             }
