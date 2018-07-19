@@ -25,6 +25,8 @@ namespace Practicas.Controllers
 
             this.CrearModelo();
             List<NewUserModel> lista = modelo.GetUsuarios();
+            var Usuario=
+            if()
             if (ModelState.IsValid)
             {
                 return View(lista);

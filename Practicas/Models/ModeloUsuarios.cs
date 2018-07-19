@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Web.Http;
 using System.Web.Routing;
-
+using System.Web.Security;
 
 
 namespace Practicas.Models
 {
     public class ModeloUsuarios: DapperContext
-    {
+    {   
+       
         public List<NewUserModel> GetUsuarios()
         {
             var query = @"SELECT * FROM Users";             
