@@ -57,24 +57,18 @@ namespace Practicas.Models
             };
            IEnumerable<NewUserModel> listausuarios = Exec<NewUserModel>(query, filtro);
             //NewUserModel user = (NewUserModel)listausuarios;
-            return listausuarios;
-
-
-            // var query = @"select Nickname,Password from Users where Nickname = @Nickname  and Password =@Password";
-            // var filtro = new
-            // {              
-            //     Nickname =  Nickname,
-            //     Password =  Password               
-            // };
-            //var usuarios = Exec<NewUserModel>(query, filtro);
-            //foreach(var u in usuarios)
-            // {
-            //     count++;
-            // }
-            // if (count != 0) {
-            //     return ("ok");
-            // }
-            // return null;            
+            return listausuarios;            
+        }
+        public IEnumerable<Roles> GetRoleByUserId(int userId)
+        {
+            var query = @"SELECT Roles.Role FROM Roles INNER JOIN UserRoles ON Roles.RoleId = UserRoles.RoleId WHERE UserId = @UserId";
+            var filtro =
+                new
+                {
+                    UserId = userId
+                };
+            IEnumerable<Roles> userRol = Exec<Roles>(query, filtro);
+            return userRol;
         }
     }   
  }
