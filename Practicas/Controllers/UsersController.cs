@@ -31,7 +31,7 @@ namespace Practicas.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult Index(String camponombre, String campopw)
+        public ActionResult Login(String camponombre, String campopw)
         {
             int count = 0;
             this.CrearModelo();
@@ -56,11 +56,13 @@ namespace Practicas.Controllers
                 Response.Cookies.Add(httpCookie);
                
 
+                return View("Index");
             }
             else
             {
                 ViewBag.res = "Usuario o contraseñas incorrectos";
                 ViewBag.color = "Red";
+
             }
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)

@@ -1,0 +1,20 @@
+﻿@using Practicas.Resources
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<form method="post" id="formulario">
+    <div>
+        <h1>@CommonResources.Login</h1>
+        <label>@CommonResources.Nickname &nbsp;</label>
+        <input type="text" name="camponombre" id="camponombre" placeholder="Introduzca el nombre" required /><br />
+        <label>@CommonResources.Password</label>
+        <input type="password" name="campopw" id="campopw" placeholder="Contraseña" required /><br />
+        <button type="submit" id="btnenviar" class="bg-success">Enviar</button>
+    </div>
+</form>
+<br />
+<h2 style="color:@ViewBag.color">@ViewBag.res</h2>
+<a href="CreateNewUser">Nuevo usuario</a>
+
