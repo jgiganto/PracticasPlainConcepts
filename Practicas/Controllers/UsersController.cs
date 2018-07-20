@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Practicas.Atributos;
 
 namespace Practicas.Controllers
 {
@@ -16,7 +17,8 @@ namespace Practicas.Controllers
             modelo = new ModeloUsuarios();
         }
 
-        [HttpGet]
+        
+        [AutorizacionClientes]
         public ActionResult Index()
         {
             ViewBag.res = "Usuario correcto";
@@ -25,15 +27,16 @@ namespace Practicas.Controllers
 
             this.CrearModelo();
             List<NewUserModel> lista = modelo.GetUsuarios();
-            var Usuario=
-            if()
+            
+
             if (ModelState.IsValid)
             {
                 return View(lista);
             }
 
-            return RedirectToAction("Index");
+            return View();
         }
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -50,38 +53,33 @@ namespace Practicas.Controllers
             IEnumerable<NewUserModel> result =  modelo.VerificarUsuario(usuario);
             var count = result.Count();
             usuario = result.FirstOrDefault();
-            //foreach (var u in result)
-            //{
-            //    count++;
-            //}
-             
+                        
             if (count == 1 )
             {
-                
+                UserPrincipal usuarioppal = HttpContext.User as UserPrincipal;
+                IEnumerable<Practicas.Models.Roles> userRoles = modelo.GetRoleByUserId(usuario.UserId);
+                String currentRol="";
+                if (userRoles.Any(r => r.Role == "Admin") == true)
+                {
+                      currentRol = "Admin";
+                    TempData["ROL"] = "El usuario es: Admin";
+                }
+                if (userRoles.Any(r => r.Role == "Client") == true)
+                {
+                      currentRol = "Client";
+                    TempData["ROL"] = "El usuario es: Client";
+                }
+                if (userRoles.Any(r => r.Role == "User") == true)
+                {
+                      currentRol = "User";
+                    TempData["ROL"] = "El usuario es: User";
+                }
+
                 FormsAuthenticationTicket ticket =
-                    new FormsAuthenticationTicket(1, usuario.Name.ToString(), DateTime.Now, DateTime.Now.AddMinutes(15), true, usuario.UserId.ToString(), FormsAuthentication.FormsCookiePath);
+                    new FormsAuthenticationTicket(1, usuario.Name.ToString(), DateTime.Now, DateTime.Now.AddSeconds(15), true, currentRol, FormsAuthentication.FormsCookiePath);
                 String ticketEncrypted = FormsAuthentication.Encrypt(ticket);
                 HttpCookie httpCookie = new HttpCookie("cookiecliente", ticketEncrypted);
                 Response.Cookies.Add(httpCookie);
-                IEnumerable<Practicas.Models.Roles> userRoles = modelo.GetRoleByUserId(usuario.UserId);
-                 
-                var userHaveRoleX = userRoles.Any(r => r.Role == "Admin");
-                var userHaveRoleX = userRoles.Any(r => r.Role == "Client");
-                var userHaveRoleX = userRoles.Any(r => r.Role == "User");
-
-                if (userHaveRoleX == true){
-
-                    TempData["ROL"] = "El usuario es: Admin";
-                }
-
-                //foreach(var user in userRole)
-                //{
-                //String miRol =  user.Role.ToString();
-                //String miRol = userHaveRoleX.ToString();
-                    //TempData["ROL"] ="El usuario es: " + miRol;
-                //}
-
-
 
                 return RedirectToAction("Index");
             }
@@ -106,13 +104,14 @@ namespace Practicas.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewUser(NewUserModel model)
+        public ActionResult CreateNewUser(NewUserModel model,String rol)
         {
             if (ModelState.IsValid)
             {
                 this.CrearModelo();
-                modelo.InsertarUsuario(model);
-                return Redirect("Index");
+                modelo.InsertarUsuario(model,rol);
+                TempData["ROL"] = "El usuario ha sido dado de alta";
+                return RedirectToAction("Index");
             }
             return View(model);
         }

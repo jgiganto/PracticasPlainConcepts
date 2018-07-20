@@ -34,7 +34,14 @@
     @Html.LabelFor(m => m.Address)
     @Html.TextBoxFor(m => m.Address)
     @Html.ValidationMessageFor(m => m.Address)
+    <br />
+    <select name="rol" multiple>
+        <option value="Admin">Administrador</option>
+        <option value="User">Usuario</option>
+        <option value="Client">Cliente</option>
+    </select>
+    <br />
     <button type="submit">Save</button>
 }
-
+<br />
 <a href="Login">Volver</a>

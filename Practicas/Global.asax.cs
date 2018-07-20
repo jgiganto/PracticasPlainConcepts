@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Security;
+using System.Security.Principal;
 
 namespace Practicas
 {
@@ -32,8 +33,12 @@ namespace Practicas
                 FormsAuthenticationTicket ticket =
                     FormsAuthentication.Decrypt(datoscookie);
                 String name = ticket.Name;
-                String userid = ticket.UserData;
-
+                String grupo = ticket.UserData;
+                GenericIdentity identidad =
+                    new GenericIdentity(name);
+                GenericPrincipal usuario =
+                    new GenericPrincipal(identidad, new string[] { grupo });
+                HttpContext.Current.User = usuario;
 
             }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Web.Http;
 using System.Web.Routing;
 using System.Web.Security;
@@ -18,17 +19,38 @@ namespace Practicas.Models
             return (List<NewUserModel>)listausuarios;                         
         } 
         
-        public void InsertarUsuario(NewUserModel usuario)
+        public void InsertarUsuario(NewUserModel usuario,string rol)
         {
+            List<NewUserModel> result = GetUsuarios();
+            var count = result.Count();
+
             var query = @"INSERT INTO Users (Name,Lastname,Nickname,Password,Country,Birthday,Address,UserId)
                         Values (@Name,@Lastname,@Nickname,@Password,@Country,@Birthday,@Address,@UserId)";
+            query += @"INSERT INTO UserRoles(UserId,RoleId) Values(@UserId,@RoleId)";
+            int idr;
+            switch (rol)
+            {
+                case "Admin":
+                      idr = 1;
+                    break;
+                case "User":
+                      idr = 2;
+                    break;
+                default :
+                      idr = 3;
+                    break;
+            }
+
+
             var filtro = new { Name = usuario.Name, Lastname = usuario.Lastname,
-                Nickname=usuario.Nickname,
+                Nickname = usuario.Nickname,
                 Password = usuario.Password,
-                Country= usuario.Country,
+                Country = usuario.Country,
                 Birthday = usuario.Birthday,
                 Address = usuario.Address,
-                UserId = usuario.UserId};
+                UserId = count + 1,
+                RoleId = idr
+            };            
             
             var listausuarios = Exec<NewUserModel>(query,filtro);
         }

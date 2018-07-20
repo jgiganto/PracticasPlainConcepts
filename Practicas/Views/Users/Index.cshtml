@@ -10,9 +10,9 @@
 
 
 <h2>Users</h2>
-<h2 style="color:@ViewBag.color">@ViewBag.res</h2> 
- <h2>@ViewBag.Rol</h2>
- 
+<h2 style="color:@ViewBag.color">@ViewBag.res</h2>
+<h2>@ViewBag.Rol</h2>
+
 @if (Model != null)
 {
     <table class="table table-bordered">
@@ -33,7 +33,7 @@
         @foreach (var user in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem =>user.Name)</td>
+                <td>@Html.DisplayFor(modelItem => user.Name)</td>
                 <td>@Html.DisplayFor(modelItem => user.Lastname)</td>
                 <td>@Html.DisplayFor(modelItem => user.Nickname)</td>
                 <td>@Html.DisplayFor(modelItem => user.Password)</td>
@@ -43,10 +43,10 @@
                 <td>@Html.DisplayFor(modelItem => user.UserId)</td>
             </tr>
         }
-       
+
     </table>
 }
+<th>@Html.DisplayFor(modelItem => @HttpContext.Current.User.Identity.Name)</th>
 
 
-  
 
