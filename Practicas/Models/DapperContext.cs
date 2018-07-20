@@ -5,6 +5,6 @@ namespace Practicas.Models
 {
     public class DapperContext:DapperBaseContext
     {
-        protected override IDbConnection Connection => new SqlConnection("data source=LEON-LAPTOP1\\SQLEXPRESS;;Integrated Security=SSPI;initial catalog=Clients");
+        protected override IDbConnection Connection => new SqlConnection("data source=JGIGANTO-LAPTOP\\SQLEXPRESS;;Integrated Security=SSPI;initial catalog=Clients");
     }
 }

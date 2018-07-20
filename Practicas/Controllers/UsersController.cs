@@ -83,14 +83,11 @@ namespace Practicas.Controllers
 
                
             }
-            else
-            {
-                ModelState.AddModelError("Error", "El usuario no se corresponde");
-            }
+           
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)
             {
-                return View(lista);
+                return RedirectToAction("Index");
             }
             return View();
         }
