@@ -81,12 +81,11 @@ namespace Practicas.Controllers
                 HttpCookie httpCookie = new HttpCookie("cookiecliente", ticketEncrypted);
                 Response.Cookies.Add(httpCookie);
 
-                return RedirectToAction("Index");
+               
             }
             else
             {
-                ViewBag.res = "Usuario o contraseñas incorrectos";
-                ViewBag.color = "Red";
+                ModelState.AddModelError("Error", "El usuario no se corresponde");
             }
             List<NewUserModel> lista = modelo.GetUsuarios();
             if (ModelState.IsValid)
