@@ -234,6 +234,7 @@
     <Content Include="Views\Zonas\ZonaAdmin.cshtml" />
     <Content Include="Views\Zonas\ZonaUser.cshtml" />
     <Content Include="Views\Zonas\ZonaClient.cshtml" />
+    <Content Include="Views\Zonas\LogOutWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

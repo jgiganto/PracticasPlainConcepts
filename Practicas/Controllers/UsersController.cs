@@ -56,7 +56,7 @@ namespace Practicas.Controllers
                         
             if (count == 1 )
             {
-                UserPrincipal usuarioppal = HttpContext.User as UserPrincipal;
+                //UserPrincipal usuarioppal = HttpContext.User as UserPrincipal;
                 IEnumerable<Practicas.Models.Roles> userRoles = modelo.GetRoleByUserId(usuario.UserId);
                 String currentRol="";
                 if (userRoles.Any(r => r.Role == "Admin") == true)
